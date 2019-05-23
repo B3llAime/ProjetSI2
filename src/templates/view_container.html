@@ -1,0 +1,23 @@
+success<br>
+<html>
+<body>
+Docker ID : {{docker_id}} <br>
+Docker Name: {{name}}<br>
+Database : {{database}}<br>
+CPU : {{cpu}}<br>
+Memory : {{memory}}<br>
+PORT : {{port}}<br>
+
+<br><br>
+<b> Docker usage </b><br>
+<iframe src="http://192.168.141.128:99/containers/docker/{{docker_id}}" width="900" height="600"></iframe>
+
+<br>
+<br>
+                <form action="view_all_container" method="POST">
+                	<input type="hidden" name="username" value="{{username}}">
+    				<input type="submit" value="View all containers" />
+				</form>
+
+</body>
+</html>

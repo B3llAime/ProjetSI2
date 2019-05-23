@@ -1,0 +1,50 @@
+ <html>
+Creating docker under user: {{username}}
+<br>
+<br>
+
+<form action="submit_container" method="POST">
+
+<input type="hidden" name="username" value="{{username}}">
+
+<fieldset>
+<legend>Create Docker</legend>
+Docker name:<br>
+<input type="text" name="docker_name" />
+<br>
+<br>
+Database :<br>
+<select name="database">
+<option value="mongodb">Mongo DB</option>
+<option value="mysql">MySQL</option>
+<option value="postgres">Postgres SQL</option>
+</select>
+<br>
+<br>
+CPU :<br>
+<select name="cpu">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="4">4</option>
+</select>
+<br>
+<br>
+
+Memory (RAM):<br>
+<select name="memory">
+<option value="32m">32 MB</option>
+<option value="64m">64 MB</option>
+<option value="128m">128 MB</option>
+<option value="256m">256 MB</option>
+</select>
+<br>
+<br>
+
+
+
+
+<input type="submit" value="Submit"></fieldset>
+</form>
+ 
+
+</html>

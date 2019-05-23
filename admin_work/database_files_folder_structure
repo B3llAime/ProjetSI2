@@ -1,0 +1,42 @@
+database_files
+├── mariadb
+│   └── mariadb-10.0.14
+│       ├── BUILD
+│       ├── client
+│       ├── cmake
+│       ├── cmd-line-utils
+│       ├── dbug
+│       ├── debian
+│       ├── Docs
+│       ├── extra
+│       ├── include
+│       ├── libmysql
+│       ├── libmysqld
+│       ├── libservices
+│       ├── man
+│       ├── mysql-test
+│       ├── mysys
+│       ├── mysys_ssl
+│       ├── packaging
+│       ├── pcre
+│       ├── plugin
+│       ├── randgen
+│       ├── scripts
+│       ├── sql
+│       ├── sql-bench
+│       ├── sql-common
+│       ├── storage
+│       ├── strings
+│       ├── support-files
+│       ├── tests
+│       ├── unittest
+│       ├── vio
+│       ├── win
+│       └── zlib
+├── mongodb
+│   └── mongodb-linux-x86_64-2.6.5
+│       └── bin
+├── postgres
+└── sqlite
+
+39 directories

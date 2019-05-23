@@ -1,0 +1,26 @@
+ <html>
+    <head>
+        <title>Handle POST requests with Flask</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div id="container">
+            <div class="title">
+                <h1>POST request with Flask</h1>
+            </div>
+            <div id="content">
+                Hello <strong>{{username}}</strong> !
+                <form action="create_container" method="POST">
+                	<input type="hidden" name="username" value="{{username}}">
+    				<input type="submit" value="Create container" />
+				</form>
+            </div>
+            <div class="title">
+                <h1>Flask code</h1>
+            </div>
+
+            </div>
+        </div>
+    </body>
+</html>
+

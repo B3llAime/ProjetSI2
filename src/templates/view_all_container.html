@@ -1,0 +1,45 @@
+All Docker containers for user : {{username}}
+<br><br>
+<table border="1" >
+    <tr>
+      <th>Docker ID</th>
+      <th>Name</th>
+      <th>Database</th>
+      <th>CPU</th>
+      <th>RAM</th>
+      <th>Port</th>
+      <th></th>
+      <th></th>
+      
+    </tr>
+{% for row in data %}
+    <tr>
+      <td>{{ row[0] }}</td>
+      <td>{{ row[1] }}</td>
+      <td>{{ row[2] }}</td>
+      <td>{{ row[3] }}</td>
+      <td>{{ row[4] }}</td>
+      <td>{{ row[5] }}</td>
+      <td>
+                 <form action="view_container" method="POST">
+                	<input type="hidden" name="username" value="{{username}}">
+                	<input type="hidden" name="docker_id" value="{{ row[0] }}">
+                	<input type="hidden" name="docker_name" value="{{ row[1] }}">
+                	<input type="hidden" name="database" value="{{ row[2] }}">
+                	<input type="hidden" name="cpu" value="{{ row[3] }}">
+                	<input type="hidden" name="memory" value="{{ row[4] }}">
+                	<input type="hidden" name="port" value="{{ row[5] }}">
+                	
+    				<input type="submit" value="View details" />
+				</form>
+	  </td>
+      <td>
+                 <form action="delete_container" method="POST">
+                	<input type="hidden" name="username" value="{{username}}">
+    				<input type="submit" value="Delete containerr" />
+				</form>
+	  </td>	  
+      
+    </tr>
+{% endfor %}
+</table>

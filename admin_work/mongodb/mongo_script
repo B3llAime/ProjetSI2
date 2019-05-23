@@ -1,0 +1,8 @@
+#/usr/bin/bash
+# MongoDB by default needs this directory '/data/db'. The follwing two lines can also be replaced by single command 'mkdir -p /data/db' 
+mkdir /data
+mkdir /data/db
+# Putting this script in sleep for 3 seconds so that the volumes(/tmp/db_files...) are mounted in Docker. This whole script runs in background (Ref: Dockerfile last line), hence no problem
+sleep 3
+
+/tmp/db_files/mongodb/mongodb-linux-x86_64-2.6.5/bin/mongod &

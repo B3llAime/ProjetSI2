@@ -1,0 +1,48 @@
+# We need to import request to access the details of the POST request
+# and render_template, to render our templates (form and response)
+# we'll use url_for to get some URLs for the app on the templates
+from flask import Flask, render_template, request, url_for
+import os
+import subprocess
+import MySQLdb
+
+# Initialize the Flask application
+app = Flask(__name__)
+
+# Define a route for the default URL, which loads the form
+@app.route('/')
+def form():
+    return render_template('login_form_submit.html')
+
+# Define a route for the action of the form, for example '/hello/'
+# We are also defining which type of requests this route is 
+# accepting: POST requests in this case
+
+db = MySQLdb.connect(host="localhost", # your host, usually localhost
+                     user="root", # your username
+                      passwd="a", # your password
+                      db="dbaas") # name of the data base
+
+# you must create a Cursor object. It will let
+#  you execute all the queries you need
+cur = db.cursor()
+
+
+@app.route('/hello/', methods=['POST'])
+def hello():
+    username=request.form['yourusername']
+    password=request.form['yourpassword']
+    if cur.execute("select * from dbaas.credentials where username='"+username+"' and password='"+password+"'"):
+        print 'success';
+    else:
+        print 'fail';
+
+    return render_template('login_form_action.html', username=username, password=password)
+
+# Run the app :)
+if __name__ == '__main__':
+  app.run( 
+        host="192.168.141.128",
+        port=int("8080")
+  )
+
