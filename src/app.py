@@ -5,10 +5,9 @@ from flask import Flask, render_template, request, url_for
 import os
 import subprocess
 import MySQLdb
-import paramiko
-from _mysql import NULL
+import mysql.connector
 #from MySQLHelper import *
-import MySQLdb
+
 
 
 
@@ -44,7 +43,7 @@ def endUnixConnection(con):
 def createDocker(dockerobj):
     if dockerobj.database=='mongodb':
         tmp_str = 'docker run -i -t -d -p 27017 -v /root/Docker/database_files:/tmp/db_files -m '+dockerobj.memory+" mongodb"
-        print tmp_str
+        print (tmp_str)
     stdin, stdout, stderr = con1.exec_command(tmp_str)
     
     dockerobj.docker_id= stdout.readlines()[0].rstrip()
@@ -73,11 +72,11 @@ docker_cur = docker_db.cursor()
 
 def addDockerDetails(dockerobject):
     tmp="insert into docker_relation (`userid`,`dockerid`) values ('"+dockerobject.username+"','"+dockerobject.docker_id+"');"
-    print tmp
+    print (tmp)
     docker_cur.execute(tmp)
     docker_db.commit()
     tmp="insert into docker_details (`docker_id`,`docker_name`,`database`,`cpu`,`memory`,`port`) values ('"+dockerobject.docker_id+"','"+dockerobject.name+"','"+dockerobject.database+"','"+dockerobject.cpu+"','"+dockerobject.memory+"','"+dockerobject.port+"');"
-    print tmp
+    print (tmp)
     docker_cur.execute(tmp)
     docker_db.commit()
     #docker_db.close()
@@ -85,10 +84,10 @@ def addDockerDetails(dockerobject):
 
 def getAllDockerUser(username):
     tmp ="select rel.dockerid,doc.docker_name,doc.database,doc.cpu,doc.memory,doc.port from docker_relation AS rel, docker_details as doc  where userid='"+username+"' and dockerid=doc.docker_id;"
-    print tmp
+    print (tmp)
     docker_cur.execute(tmp)
     data=docker_cur.fetchall()
-    print data
+    print (data)
     return data
     
 ##############  INITIALIZATION   ##################################################################################################
